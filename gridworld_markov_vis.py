@@ -94,6 +94,7 @@ def make_transition_matrix_local(
 
     # Numerical sanity.
     P /= P.sum(axis=1, keepdims=True)
+    print(P)
     return P
 
 
@@ -134,6 +135,7 @@ def make_transition_matrix_sink_uniform(
             share = (1.0 - p_stay) / len(nbrs)
             for rr, cc in nbrs:
                 P[s, gw.to_index(rr, cc)] += share
+    print(P)
     return P
 
 
@@ -174,6 +176,7 @@ def make_transition_matrix_regular_dense(
     U = np.full((n, n), 1.0 / n, dtype=float)
     P = (1.0 - epsilon) * Q + epsilon * U
     P /= P.sum(axis=1, keepdims=True)
+    print(P)
     return P
 
 
